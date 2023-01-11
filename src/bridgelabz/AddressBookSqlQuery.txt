@@ -1,0 +1,70 @@
+SHOW databases;
+/*UC1-create database
+*/
+create database addressbooksystem;
+use addressbooksystem;
+
+/*UC2-create AddressBook table with following attributes
+*/
+create table AddressBook(id int,FirstName varchar(20),
+LastName varchar(20),Address varchar(30),
+City varchar(10),State varchar(20),Zip varchar(10),
+PhoneNumber varchar(20),Email varchar(20),Primary Key(id));
+select * from AddressBook;
+
+/*UC3-insert data into table by using above attributes
+*/
+insert into AddressBook(id,FirstName,LastName,Address,City,State,Zip,PhoneNumber,
+Email)values('1','Madhuri','Tayade','OmChintamani','Titwala','Maharashtra',
+'554433','8965475544','dev@gmail.com');
+insert into AddressBook(id,FirstName,LastName,Address,City,State,Zip,PhoneNumber,
+Email)values('2','Hemant','Tayade','SaiShraddha','Kalyan','Maharashtra',
+'454433','8865475554','tayde@gmail.com');
+select * from AddressBook;
+
+/*UC4-Update table
+*/
+update AddressBook set LastName = 'Devraj' where id = 1;
+select * from AddressBook;
+
+/*UC5-Delete contact
+*/
+delete from addressbook where id=3;
+select * from AddressBook;
+
+/*UC6-retrive person belonging to city or state*/
+select * from addressbook where city = 'Titwala';
+select * from addressbook where state = 'Maharashtra';
+
+/*UC7-size of address book by city or state
+select count(*) from addressbook where city='Kalyan';
+select count(*) from addressbook where state='Maharashtra';
+select * from addressbook
+
+/*UC8-sort entries alphabetically by person's name
+*/
+select * from addressbook order by FirstName;
+
+/*UC9-add coloumns like type family,friend and profession and also add name of addressbook
+*/
+alter table addressbook add type varchar(10) default'friend';
+
+insert into AddressBook(id,FirstName,LastName,Address,City,State,Zip,PhoneNumber,
+Email,BookName,type)values('3','Ajay','Devraj','SaiShraddha','Jalgaon','Maharashtra',
+'434433','7765475554','ajay@gmail.com','Book1','Family');
+
+insert into AddressBook(id,FirstName,LastName,Address,City,State,Zip,PhoneNumber,
+Email,BookName,type)values('4','Vijay','Devraj','Shraddhanagar','Jalgaon','Maharashtra',
+'434433','7765475554','vijay@gmail.com','Book1','Profession');
+
+select * from addressbook;
+
+/*UC10-to get number of contact persons i.e.count by type
+*/
+select count(type) from addressbook;
+select * from addressbook
+
+/*UC12-ER-Diagram*/
+
+/*UC13-Retrive queries done especially in uc6,uc7,uc8 and uc10 are working with new 
+table structure*/
